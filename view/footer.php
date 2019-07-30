@@ -1,5 +1,5 @@
  <!-- Footer -->
-      <footer class="sticky-footer bg-gradient-primary" style="
+      <!-- <footer class="sticky-footer bg-gradient-primary" style="
   bottom: 0;
   left: 0;
   height: 40px;
@@ -10,7 +10,7 @@
             <span style="color:white">Copyright &copy; Your Website 2019</span>
           </div>
         </div>
-      </footer>
+      </footer> -->
       <!-- End of Footer -->
 
     </div>
