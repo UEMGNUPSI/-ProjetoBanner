@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Jul-2019 às 20:50
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 7.3.3
+-- Generation Time: 30-Jul-2019 às 20:51
+-- Versão do servidor: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,6 +44,25 @@ CREATE TABLE `banner` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `categoria_banner`
+--
+
+CREATE TABLE `categoria_banner` (
+  `id` int(11) NOT NULL,
+  `categoria_banner` varchar(255) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `categoria_banner`
+--
+
+INSERT INTO `categoria_banner` (`id`, `categoria_banner`) VALUES
+(1, 'gtt'),
+(2, 'y6yyh');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `login`
 --
 
@@ -71,6 +90,12 @@ ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `categoria_banner`
+--
+ALTER TABLE `categoria_banner`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -84,7 +109,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `categoria_banner`
+--
+ALTER TABLE `categoria_banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `login`
