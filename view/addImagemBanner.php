@@ -56,132 +56,17 @@ $('.image-upload-wrap').bind('dragover', function () {
 });
 </script>
 
-<style> 
-body {
-  font-family: sans-serif;
-  background-color: #eeeeee;
-}
 
-.file-upload {
-  background-color: #ffffff;
-  width: 600px;
-  margin: 0 auto;
-  padding: 10px;
-}
+<link href="../css/teste.css" rel="stylesheet">
 
-.file-upload-btn {
-  width: 100%;
-  margin: 0;
-  color: #fff;
-  background: #1FB264;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #15824B;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
-}
 
-.file-upload-btn:hover {
-  background: #1AA059;
-  color: #ffffff;
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.file-upload-btn:active {
-  border: 0;
-  transition: all .2s ease;
-}
-
-.file-upload-content {
-  display: none;
-  text-align: center;
-}
-
-.file-upload-input {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.image-upload-wrap {
-  margin-top: 20px;
-  border: 4px dashed #1FB264;
-  position: relative;
-}
-
-.image-dropping,
-.image-upload-wrap:hover {
-  background-color: #1FB264;
-  border: 4px dashed #ffffff;
-}
-
-.image-title-wrap {
-  padding: 0 15px 15px 15px;
-  color: #222;
-}
-
-.drag-text {
-  text-align: center;
-}
-
-.drag-text h3 {
-  font-weight: 100;
-  text-transform: uppercase;
-  color: #15824B;
-  padding: 60px 0;
-}
-
-.file-upload-image {
-  max-height: 200px;
-  max-width: 200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.remove-image {
-  width: 200px;
-  margin: 0;
-  color: #fff;
-  background: #cd4535;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #b02818;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.remove-image:hover {
-  background: #c13b2a;
-  color: #ffffff;
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.remove-image:active {
-  border: 0;
-  transition: all .2s ease;
-}
-
-</style>
 </head>
 
 <?php include_once "sidebar.php"; ?>
-<?php include_once "../funcoes/conexao.php"; ?>
-<form method="post" id="cadProtocolo">
-<div class="form-row ml-5"> 
-    <div class="form-group col-sm-6">
+<?php include_once "../funcoes/conexao.php";?>
+<form method="post" id="cadProtocolo"  >
+<div class="form-row "> 
+    <div class="form-group col-sm-10"style="margin: 0 auto">
 
     <label for="curso">Banner:</label>
     <select id="curso" class="form-control" name="curso">
@@ -203,26 +88,26 @@ body {
 </div>
 </div>
 
-<div class="form-row ml-5   mt-3"> 
+<div class="form-row ml-5 mt-3" style="justify-content: center;position: relative;" > 
 <div style="border-width: 6px;
   border-style: dashed;
-  border-color: #f00;width: 200px;height: 200px; margin-right: 5%;">
+  border-color: #428bca;width:  150px;height: 150px; margin-right: 5%;">
 </div>
 <div style="border-width: 6px;
   border-style: dashed;
-  border-color: #f00;width: 200px;height: 200px; margin-right: 5%;">
+  border-color: #428bca;width:  150px;height:  150px; margin-right: 5%;">
 </div>
 <div style="border-width: 6px;
   border-style: dashed;
-  border-color: #f00;width: 200px;height: 200px; margin-right: 5%;">
+  border-color: #428bca;width:  150px;height:  150px; margin-right: 5%;">
 </div>
 <div style="border-width: 6px;
   border-style: dashed;
-  border-color: #f00;width: 200px;height: 200px; margin-right: 5%;">
+  border-color: #428bca;width:  150px;height:  150px; margin-right: 5%;">
 </div>
 <div style="border-width: 6px;
   border-style: dashed;
-  border-color: #f00;width: 200px;height: 200px; margin-right: 5%;">
+  border-color: #428bca;width:  150px;height:  150px; margin-right: 5%;">
 </div>
 
 
@@ -231,7 +116,7 @@ body {
 
 </form>
 
-<div class="file-upload">
+<div class="file-upload" style="">
 
   <div class="image-upload-wrap">
     <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
