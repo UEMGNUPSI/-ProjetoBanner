@@ -40,7 +40,7 @@ session_start();
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Utilidades:</h6>
             <a class="collapse-item" href="addCategoriaBanner.php">Banners</a>
-            <a class="collapse-item" href="addcurso.php">Inserir imagem</a> 
+            <a class="collapse-item" href="addImagemBanner.php">Inserir imagem</a> 
           </div>
         </div>
       </li>

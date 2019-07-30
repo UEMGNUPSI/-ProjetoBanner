@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Projeto Banner - Em branco</title>
+  <title>Banner</title>
 
   
 
@@ -31,7 +31,7 @@
            
             /// Quando usuário clicar em salvar será feito todos os passo abaixo
             $('#salvar').click(function() {
-                var dados = $('#cadCatBanner').serialize();
+                var dados = $('#banner').serialize();
 
                 $.ajax({
                     type: 'POST',
@@ -42,8 +42,10 @@
                     success: function(response) {
                         if (response == '1') {
                             $('#myModal').modal('show');
-                        } else {
+                        } else if(response == '2') {
                             $('#myModal2').modal('show');
+                        }else{
+                            $('#myModal3').modal('show');
                         }
                     }
                 });
@@ -93,6 +95,19 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="modal-title" id="myModalLabel">Banner já cadastrado!</h4>
+						</div>
+						<div class="modal-footer">
+							<a href="addCategoriaBanner.php"><button type="button" class="btn btn-danger">Voltar</button></a>
+						</div>
+					</div>
+				</div>
+			</div>	
+         <!-- Modal caso campo esteja vazio -->
+         <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">Complete corretamente o campo de cadastro!</h4>
 						</div>
 						<div class="modal-footer">
 							<a href="addCategoriaBanner.php"><button type="button" class="btn btn-danger">Voltar</button></a>
