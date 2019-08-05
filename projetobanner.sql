@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Jul-2019 às 20:51
+-- Generation Time: 05-Ago-2019 às 18:49
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -49,16 +49,9 @@ CREATE TABLE `banner` (
 
 CREATE TABLE `categoria_banner` (
   `id` int(11) NOT NULL,
-  `categoria_banner` varchar(255) CHARACTER SET utf8 NOT NULL
+  `categoria_banner` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `banner_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `categoria_banner`
---
-
-INSERT INTO `categoria_banner` (`id`, `categoria_banner`) VALUES
-(1, 'gtt'),
-(2, 'y6yyh');
 
 -- --------------------------------------------------------
 
@@ -93,7 +86,8 @@ ALTER TABLE `banner`
 -- Indexes for table `categoria_banner`
 --
 ALTER TABLE `categoria_banner`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `banner_id` (`banner_id`);
 
 --
 -- Indexes for table `login`
@@ -109,19 +103,29 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `categoria_banner`
 --
 ALTER TABLE `categoria_banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `categoria_banner`
+--
+ALTER TABLE `categoria_banner`
+  ADD CONSTRAINT `categoria_banner_ibfk_1` FOREIGN KEY (`banner_id`) REFERENCES `banner` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
