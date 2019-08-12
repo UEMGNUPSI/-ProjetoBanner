@@ -7,7 +7,7 @@ session_start();
   <div id="wrapper" style="position: absolute; width: 100%">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"  id="accordionSidebar">
+    <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion"  id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -31,7 +31,7 @@ session_start();
     
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item"style="position: relative;">
+      <li class="nav-item "style="position: relative;">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-images"></i>
           <span>Cadastrar</span>
