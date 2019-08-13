@@ -40,7 +40,7 @@
 
         $sql = "SELECT * FROM categoria_banner";
         $consulta = mysqli_query($conn, $sql);
-q
+
         while ($dados = mysqli_fetch_assoc($consulta)) {
           ?>
         <form action="post" class="col-5">
