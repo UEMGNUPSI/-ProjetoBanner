@@ -7,7 +7,7 @@ session_start();
   <div id="wrapper" style="position: absolute; width: 100%">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion"  id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color:#292b2c"  id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
