@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -14,40 +14,45 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
-    <style>
-      
-        .teste {
-            
-            width: 80%;
-            height: 40%;
-        }
-        .img-teste{
-            max-height: 40%;
-            max-width: 80%;
-        }
-    </style>
+    <link   href="../css/carousel.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../js/carousel.js"></script>
 </head>
-<div class="container" style="">
-    <div id="carouselExampleFade" style="" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active teste">
-                <img class="d-block w-100 img-teste" src="../documentos/Diego Maradona/Diagrama att2.png" alt="Primeiro Slide">
-            </div>
-            <div class="carousel-item teste">
-                <img class="d-block w-100 img-teste" src="../documentos/Diego Maradona/Diagrama att.png" alt="Segundo Slide">
-            </div>
-            <div class="carousel-item teste">
-                <img class="d-block w-100 img-teste" src="../documentos/Ivan/task-complete (1).png" alt="Terceiro Slide">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-            <span class="carousel-control-next-icon"  aria-hidden="true"></span>
-            <span class="sr-only">Próximo</span>
-        </a>
+<body >
+<div class="slider-container">
+  <div class="slider-control left inactive"></div>
+  <div class="slider-control right"></div>
+  <ul class="slider-pagi"></ul>
+  
+  <div class="slider">
+<?php
+ $nome_banner = $_GET['banner'];
+ $caminho = '../documentos/' . $nome_banner . '/';
+ $img = glob($caminho . '*{jpg,png}', GLOB_BRACE);
+ $contador = count($img);
+
+ $loopHorizontal = 5;
+
+ for ($i = 0; $i < $contador; $i++) {
+   if ($contador < $loopHorizontal) {
+     ?>
+
+    <div class="slide slide-0 ">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+       <img src="<?php echo $img[$i];?>">
+      </div>
     </div>
+   
+
+   <?php
+     } 
+ }
+?>
+
+
+    
+  </div>
+
 </div>
+
 <?php include("footer.php"); ?>
