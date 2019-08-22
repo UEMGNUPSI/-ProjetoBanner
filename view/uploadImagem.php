@@ -88,16 +88,34 @@
             $arq = "[" . $a . "]" . $arq;
           }
           if (is_dir($_UP['pasta'])) {
+
+            // list($largura, $altura) = getimagesize($arq);
+
+            // if($largura <= 400 && $altura <= 200) {
+            //     echo "Imagem válida!";   
+            //     echo 'Largura = '.$largura.' | Altura = '.$altura;
+            // } else {
+            //     echo "Imagem incorreta";  
+            //     echo 'Largura = '.$largura.' | Altura = '.$altura;
+            // } 
+
             //Se a Pasta Existe  
             if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $arq))
-              echo "<script>$('#myModal').modal(options) </script>";
+             echo 
+"<script>   
+alert('Enviado com sucesso!');
+
+</script>";
             else
               echo '<div class="res">Não possível realizar o upload! <span> X </span> </div>';
           } else {
             mkdir($_UP['pasta'], 0777);
 
             if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $arq))
-              echo "<script>$('#myModal').modal(show) </script>";
+              echo "<script>   
+              alert('Enviado com sucesso!');
+              
+              </script>";
             else
               echo '<div class="res">Não possível realizar o upload! <span> X </span> </div>';
           }
