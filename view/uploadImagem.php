@@ -35,7 +35,7 @@
         var fileName = fup.value;
         var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
 
-        if (ext == "jpeg" || ext == "png") {
+        if (ext == "jpeg" || ext == "png") ||ext= "gif" {
           return true;
         } else {
           return false;
@@ -138,7 +138,7 @@
       <?php
 
       $caminho = '../documentos/' . $nome_banner . '/';
-      $img = glob($caminho . '*{jpg,png}', GLOB_BRACE);
+      $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
       $contador = count($img);
 
       $loopHorizontal = 5;

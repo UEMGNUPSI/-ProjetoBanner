@@ -1,7 +1,7 @@
 
 
 <?php  function apagarTudo ($dir) {
-
+  
           if (is_dir($dir)) {
 
               $iterator = new \FilesystemIterator($dir);
@@ -17,5 +17,8 @@
                   }
               }
           }
-      }   
+      }  
+      $nome_banner = $_GET['banner'];
+      $caminho = '../documentos/' . $nome_banner . '/'; 
       apagarTudo($caminho);
+      ?>
