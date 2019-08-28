@@ -108,9 +108,9 @@
         .jssora053.jssora053dn {opacity:.5;}
         .jssora053.jssora053ds {opacity:.3;pointer-events:none;}
     </style>
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:2000px;height:1000px;overflow:hidden;visibility:hidden;">    
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1920px;height:1080px;overflow:hidden;visibility:hidden;">    
         
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:2000px;height:1000px;overflow:hidden;">
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1920px;height:1080px;overflow:hidden;">
         <?php
       $nome_banner = $_GET['banner'];
       $caminho = '../documentos/' . $nome_banner . '/';
