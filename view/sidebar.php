@@ -1,6 +1,8 @@
   <?php 
 session_start();
 ?>
+<style>
+</style>
 <body id="page-top">
 
   <!-- Page Wrapper -->
