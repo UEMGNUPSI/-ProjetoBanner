@@ -25,6 +25,7 @@
 </head>
 
 <?php include_once "sidebar.php"; ?>
+<?php include_once "../funcoes/conexao.php"; ?>
 
   <script type="text/javascript" language="javascript">
         $(document).ready(function() {
@@ -52,6 +53,11 @@
                 return false;
             });
         });
+
+        function excluirModal() {
+            $('#excluirModal').modal('show');
+            event.preventDefault();
+        }
     </script>
 
     <div class="">
@@ -74,6 +80,56 @@
 
                     </div>
                 </form>
+</div>
+<div class="table-responsive" style="width: 90%; padding:1%; margin:auto">  
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <th class="text-center"> Banners</th>
+        <th class="text-center"> Ações</th>
+
+        <?php        
+            $sql = "SELECT * FROM categoria_banner ORDER BY categoria_banner ASC";
+            $consulta = mysqli_query($conn, $sql);
+
+            while ($dados = mysqli_fetch_assoc($consulta)) {
+                echo "<tbody>";
+                echo "<tr>";
+                echo "<td>" . $dados['categoria_banner'] . "</td>";
+                echo "<td>";
+
+                
+                ?>
+                <form>
+                    <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
+                    <button type="submit" style="cursor: pointer;" class=" mr-4" formaction="#"><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>
+
+                    <button type="submit" style="cursor: pointer;" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()" ><i class="fa fa-trash text-primary" title="Excluir" aria-hidden="true"></i></button>
+                </form>
+                </td>
+            </tr>
+        </tbody>
+        
+<div class="modal fade" id="excluirModal<?php echo $dados['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir este curso?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <form>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="../funcoes/excluirCategoria.php?id=<?php echo $dados['id']; ?>">Excluir</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <?php } ?>
+    </table>
 </div>
                   <!-- Cadastro Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

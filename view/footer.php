@@ -37,7 +37,7 @@
         <div class="modal-body">Selecione "Sair" para encerrar sua sessão.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Sair</a>
+          <a class="btn btn-primary" href="../funcoes/logout.php">Sair</a>
         </div>
       </div>
     </div>
