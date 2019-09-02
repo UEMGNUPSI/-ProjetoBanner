@@ -12,7 +12,7 @@
 </head>
 <body>
  <?php 
-    header('Location: view/listarbanner.php')
+    header('Location: view/inicioBanner.php')
  ?>
 </body>
 </html>

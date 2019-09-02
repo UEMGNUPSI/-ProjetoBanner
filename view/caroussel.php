@@ -107,16 +107,15 @@
         .jssora053:hover {opacity:.8;}
         .jssora053.jssora053dn {opacity:.5;}
         .jssora053.jssora053ds {opacity:.3;pointer-events:none;}
+
+        html{
+        overflow-y:hidden;
+        overflow-x:hidden;
+        }
     </style>
-<<<<<<< HEAD
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1980px;height:1021px;overflow:hidden;visibility:hidden;">    
-        
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1980px;height:1021px;overflow:hidden;">
-=======
     <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1920px;height:1080px;overflow:hidden;visibility:hidden;">    
         
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1920px;height:1080px;overflow:hidden;">
->>>>>>> d9f400c46ef271e8aff8585ef59a16ce286eb098
         <?php
       $nome_banner = $_GET['banner'];
       $caminho = '../documentos/' . $nome_banner . '/';
