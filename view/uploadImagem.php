@@ -137,15 +137,15 @@
           for ($i = 0; $i < $contador; $i++) {
             if ($contador < $loopHorizontal) {
               
-echo"
+          echo"
           <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 2%;'>
-            <a href='../funcoes/apagarImagem.php?imagem='.$img[$i].''> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+          <a href='../funcoes/apagarImagem.php?imagem=".$img[$i]."&banner=".$nome_banner."'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
          "; 
             } else if ($contador = $loopHorizontal) {
        echo"       
             <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>
-            <a href='../funcoes/apagarImagem.php?imagem=$img[$i]'><img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+            <a href='../funcoes/apagarImagem.php?imagem=".$img[$i]."&banner=".$nome_banner."'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
 
           </div>
           ";
