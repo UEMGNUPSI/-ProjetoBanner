@@ -1,5 +1,5 @@
 <?php 
     session_start();
     session_destroy();
-    header('Location: ../view/listarBanner.php')
+    header('Location: ../view/login.php')
 ?>

@@ -1,7 +1,9 @@
 
 
-<?php  function apagarTudo ($dir) {
-  
+<?php 
+    $dir = $_GET['banner'];
+    $nome_banner = $_GET['nomebanner'];
+    
           if (is_dir($dir)) {
 
               $iterator = new \FilesystemIterator($dir);
@@ -16,9 +18,6 @@
                       $file->isDir() ?  rmdir($file) : unlink($file);
                   }
               }
-          }
-      }  
-      $nome_banner = $_GET['banner'];
-      $caminho = '../documentos/' . $nome_banner . '/'; 
-      apagarTudo($caminho);
-      ?>
+          } 
+        header('Location: ../view/uploadImagem.php?banner='.$nome_banner.'') 
+?>
