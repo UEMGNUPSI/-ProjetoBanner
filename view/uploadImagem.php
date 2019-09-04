@@ -19,13 +19,6 @@
         $(this).tab('show')
       })
 
-
-      function funcao1() {
-        $('#cadastroModal').modal('hide');
-        alert("Cadastro efetuado com sucesso!");
-
-      }
-
       function Checkfiles() {
         var fup = document.getElementById('nome_arquivo');
         var fileName = fup.value;
@@ -37,7 +30,8 @@
           return false;
         }
       }
-             
+
+          
     </script>
   </head>
 
@@ -77,12 +71,12 @@
 
     <div class="tab-content mt-3">
       <div class="tab-pane active" id="Cadastrar" role="tabpanel" aria-labelledby="Cadastrar-tab">
-        <form action="#" method="POST" enctype="multipart/form-data" class="ml-4 mb-3" onsubmit="Checkfiles(this)">
+        <form  method="POST" enctype="multipart/form-data" class="ml-4 mb-3" onsubmit="Checkfiles(this)">
           <div class="fileUpload btn btn-primary">
             <input type="file" id="nome_arquivo" name="arquivo" <?php echo $disabled;?> accept="image/png, image/jpeg">
             <span class="nome_arquivo"></span>
           </div>
-          <input type="submit" name="botao" value="Enviar">
+          <input type="submit" name="botao" value="Enviar"onClick="history.go(0)" >
           <?php         
           $_UP['pasta'] = '../documentos/' . $nome_banner . '/';     
 
@@ -99,21 +93,20 @@
             }
             if (is_dir($_UP['pasta'])) { 
               if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $arq))
-                echo
-                  "<script>alert('Enviado com sucesso!');</script>";
+              echo "<script> window.location.href=window.location.href </script>";
+                  
               else
-                echo '<div class="res">Não possível realizar o upload! <span> X </span> </div>';
+                echo "Não possível realizar o upload! ";
             }else {
               mkdir($_UP['pasta'], 0777);
 
               if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $arq))
-                echo "<script>   
-                alert('Enviado com sucesso!');
-                
-                </script>";
+              echo "<script> window.location.href=window.location.href </script>";
               else
-                echo '<div class="res">Não possível realizar o upload! <span> X </span> </div>';
+                echo "Não possível realizar o upload! ";
             }
+            
+            
           }
 
           ?>
@@ -135,8 +128,8 @@
 
           <?php
           for ($i = 0; $i < $contador; $i++) {
-            if ($contador < $loopHorizontal) {
-              
+            if ($contador <= $loopHorizontal) {
+
           echo"
           <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 2%;'>
           <a href='../funcoes/apagarImagem.php?imagem=".$img[$i]."&banner=".$nome_banner."'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
