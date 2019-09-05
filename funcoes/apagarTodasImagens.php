@@ -1,8 +1,8 @@
 
 
 <?php 
-    $dir = $_GET['banner'];
-    $nome_banner = $_GET['nomebanner'];
+    $dir = $_POST['banner'];
+    $nome_banner = $_POST['nomebanner'];
     
           if (is_dir($dir)) {
 
@@ -19,5 +19,6 @@
                   }
               }
           } 
-        header('Location: ../view/uploadImagem.php?banner='.$nome_banner.'') 
+          echo 1;
+        //header('Location: ../view/uploadImagem.php?banner='.$nome_banner.'') 
 ?>

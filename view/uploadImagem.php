@@ -24,14 +24,39 @@
         var fileName = fup.value;
         var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
 
-        if (ext == "jpeg" || ext == "png") ||ext= "gif" {
+        if (ext == "jpeg" || ext == "png") {
           return true;
         } else {
           return false;
         }
       }
 
-          
+      $(document).ready(function() {
+
+        /// Quando usuário clicar em salvar será feito todos os passo abaixo
+        $('#delete').click(function() {
+
+          var dados = $('#excluirTodasImagens').serialize();
+          $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '../funcoes/apagarTodasImagens.php',
+            async: true,
+            data: dados,
+            success: function(response) {
+              if (response == '1') {
+                $('#confirm').modal('hide');
+                $('#myModal').modal('show');
+
+              } else {
+                $('#myModal2').modal('show');
+              }
+            }
+          });
+
+          return false;
+        });
+      });
     </script>
   </head>
 
@@ -53,32 +78,32 @@
 
       </ul>
     </div>
-     
+
     <?php
-      $nome_banner = $_GET['banner'];
-      $caminho = '../documentos/' . $nome_banner . '/';
-      $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
-      $contador = count($img);
+    $nome_banner = $_GET['banner'];
+    $caminho = '../documentos/' . $nome_banner . '/';
+    $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
+    $contador = count($img);
 
-      $numImagem = 5;
+    $numImagem = 5;
 
-      if($contador == $numImagem){
-        $disabled = 'disabled';
-      }else{
-        $disabled = "";    
-      }  
+    if ($contador == $numImagem) {
+      $disabled = 'disabled';
+    } else {
+      $disabled = "";
+    }
     ?>
 
     <div class="tab-content mt-3">
       <div class="tab-pane active" id="Cadastrar" role="tabpanel" aria-labelledby="Cadastrar-tab">
-        <form  method="POST" enctype="multipart/form-data" class="ml-4 mb-3" onsubmit="Checkfiles(this)">
+        <form method="POST" enctype="multipart/form-data" class="ml-4 mb-3" onsubmit="Checkfiles(this)">
           <div class="fileUpload btn btn-primary">
-            <input type="file" id="nome_arquivo" name="arquivo" <?php echo $disabled;?> accept="image/png, image/jpeg">
+            <input type="file" id="nome_arquivo" name="arquivo" <?php echo $disabled; ?> accept="image/png, image/jpeg">
             <span class="nome_arquivo"></span>
           </div>
-          <input type="submit" name="botao" value="Enviar"onClick="history.go(0)" >
-          <?php         
-          $_UP['pasta'] = '../documentos/' . $nome_banner . '/';     
+          <input type="submit" name="botao" value="Enviar" onClick="history.go(0)">
+          <?php
+          $_UP['pasta'] = '../documentos/' . $nome_banner . '/';
 
           if (isset($_POST['botao'])) {
             $arq = $_FILES['arquivo']['name'];
@@ -91,22 +116,20 @@
               }
               $arq = "[" . $a . "]" . $arq;
             }
-            if (is_dir($_UP['pasta'])) { 
+            if (is_dir($_UP['pasta'])) {
               if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $arq))
-              echo "<script> window.location.href=window.location.href </script>";
-                  
+                echo "<script> window.location.href=window.location.href </script>";
+
               else
                 echo "Não possível realizar o upload! ";
-            }else {
+            } else {
               mkdir($_UP['pasta'], 0777);
 
               if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $arq))
-              echo "<script> window.location.href=window.location.href </script>";
+                echo "<script> window.location.href=window.location.href </script>";
               else
                 echo "Não possível realizar o upload! ";
             }
-            
-            
           }
 
           ?>
@@ -130,24 +153,23 @@
           for ($i = 0; $i < $contador; $i++) {
             if ($contador <= $loopHorizontal) {
 
-          echo"
+              echo "
           <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 2%;'>
-          <a href='../funcoes/apagarImagem.php?imagem=".$img[$i]."&banner=".$nome_banner."'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+          <a href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
-         "; 
+         ";
             } else if ($contador = $loopHorizontal) {
-       echo"       
+              echo "       
             <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>
-            <a href='../funcoes/apagarImagem.php?imagem=".$img[$i]."&banner=".$nome_banner."'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+            <a href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
 
           </div>
           ";
-
             }
           }
-        ?>  
+          ?>
         </div>
-       
+
       </form>
 
 
@@ -158,16 +180,57 @@
 
 
 
-
       <div class="tab-pane" id="Excluir" role="tabpanel" aria-labelledby="Excluir-tab">
-        <form method="GET">
-        <input type="hidden" name="banner" value="<?php echo $caminho; ?>">
-        <input type="hidden" name="nomebanner" value="<?php echo $nome_banner; ?>">
-        <button class="btn btn-primary"role="button" formaction="../funcoes/apagarTodasImagens.php">Apagar Todas Imagens</button>     
-       </form>
+        <form method="POST" id="excluirTodasImagens">
+          <input type="hidden" name="banner" value="<?php echo $caminho; ?>">
+          <input type="hidden" name="nomebanner" value="<?php echo $nome_banner; ?>">
+          <input class="btn btn-primary" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" style="float: right;" />
+        </form>
       </div>
+      <!-- Excluir - Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Imagens excluidas com sucesso!</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" onclick="history.go(0)" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+              <a class="text-white" href="addImagemBanner.php"><button type="button" class="btn btn-info">Listar banners</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="confirm" role="dialog">
+        <div class="modal-dialog modal-md">
 
+          <div class="modal-content">
+            <div class="modal-body">
+              <p> DESEJA REALMENTE EXCLUIR TODAS AS IMAGENS?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
+              <a href="#" type="button" class="btn btn-danger" id="delete">Apagar Registo</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Erro ao excluir - Modal -->
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Erro ao excluir as Imagens</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
+
   <?php include_once  "footer.php"; ?>
