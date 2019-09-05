@@ -22,11 +22,6 @@
  
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
-</head>
-
-<?php include_once "sidebar.php"; ?>
-<?php include_once "../funcoes/conexao.php"; ?>
-
   <script type="text/javascript" language="javascript">
         $(document).ready(function() {
            
@@ -58,29 +53,32 @@
             $('#excluirModal').modal('show');
             event.preventDefault();
         }
+        function editarModal() {
+            $('#editarModal').modal('show');
+            event.preventDefault();
+        }
     </script>
 
-    <div class="">
-     <form method="post" id="cadCatBanner">
+</head>
 
-                    <div class="form-row ml-5">
+<?php include_once "sidebar.php"; ?>
+<?php include_once "../funcoes/conexao.php"; ?> 
+    
+<form method="post" id="cadCatBanner">
+    <div class="form-row ml-5">
+        <div class="form-group col-sm-6 ">
+            <label for="Banner">Banner:</label>
+            <input type="text" class="form-control" maxlength="50" minlength="5" name="categoriaBanner" id="banner" placeholder="Digite o nome do banner" required="">
+        </div>
+    </div>	
 
-                        <div class="form-group col-sm-6 ">
-                            <label for="Banner">Banner:</label>
-                            <input type="text" class="form-control" maxlength="50" minlength="5" name="categoriaBanner" id="banner" placeholder="Digite o nome do banner" required="">
-                        </div>
+    <div class="form-row ml-5 mb-3">
+        <div class="col-sm-6">
+             <input  class = "btn btn-primary"type="button" value="Cadastrar"  />
+        </div>
+    </div>
+</form>
 
-                    </div>	
-
-                    <div class="form-row ml-5 mb-3">
-                        <div class="col-sm-6">
-                            <input  class = "btn btn-primary"type="button" value="Cadastrar" id="salvar" style="float: right;" />
-                            <a class="btn btn-danger text-white" id="voltar" data-toggle="modal" data-target="#Cancelar">Cancelar</a> 
-                        </div>
-
-                    </div>
-                </form>
-</div>
 <div class="table-responsive" style="width: 90%; padding:1%; margin:auto">  
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <th class="text-center"> Banners</th>
@@ -100,14 +98,14 @@
                 ?>
                 <form>
                     <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
-                    <button type="submit" style="cursor: pointer;" class=" mr-4" formaction="#"><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>
+                    <button type="submit" style="cursor: pointer;" data-toggle="modal" data-target="#editarModal<?php echo $dados['id']; ?>" onclick="editarModal()" class=" mr-4" formaction="#"><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>
 
                     <button type="submit" style="cursor: pointer;" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()" ><i class="fa fa-trash text-primary" title="Excluir" aria-hidden="true"></i></button>
                 </form>
                 </td>
             </tr>
         </tbody>
-        
+         
 <div class="modal fade" id="excluirModal<?php echo $dados['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -127,8 +125,35 @@
     </div>
 </div>
 
-
-        <?php } ?>
+<div class="modal fade" id="editarModal<?php echo $dados['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Alterar Nome do Banner</h5>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="../funcoes/editarCategoria.php">
+            <?php   
+                $Id = $dados['id'];     
+                $sql2 = "SELECT * FROM curso WHERE id='$Id'";
+                $consulta2 = mysqli_query($conn, $sql2);
+            ?>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Alterar:</label>
+            <input type="text" class="form-control" id="nome_banner" name="nome_banner"placeholder="<?php echo $dados['categoria_banner']; ?>">
+          </div>       
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">  
+        <input type="hidden" name="categoria_banner" value="<?php echo $dados['categoria_banner']; ?>">  
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary" >Alterar</button>
+      </div>      
+      </form>      
+    </div>
+  </div>
+</div>
+<?php } ?>         
     </table>
 </div>
                   <!-- Cadastro Modal -->
@@ -139,8 +164,7 @@
                         <h4 class="modal-title" id="myModalLabel">Banner cadastrado com Sucesso!</h4>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
-                        <a  class="text-white"href="inicio.php"><button type="button" class="btn btn-info">Listar Banners</a>
+                        <a  class="text-white" href="" onClick="history.go(0)"><button type="button" class="btn btn-info">Voltar</a>
                     </div>
                </div>
             </div>
@@ -170,5 +194,9 @@
 						</div>
 					</div>
 				</div>
-			</div>	
+            </div>	
+            
+
+
+
 <?php include_once  "footer.php"; ?>
