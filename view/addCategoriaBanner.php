@@ -94,7 +94,6 @@
                 <form>
                     <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
                     <button type="submit" style="cursor: pointer;" data-toggle="modal" data-target="#editarModal<?php echo $dados['id']; ?>" onclick="editarModal()" class=" mr-4" formaction="#"><i class="fas fa-pen-square text-primary" title="Editar" aria-hidden="true"></i></button>
-
                     <button type="submit" style="cursor: pointer;" data-toggle="modal" data-target="#excluirModal<?php echo $dados['id']; ?>" onclick="excluirModal()" ><i class="fa fa-trash text-primary" title="Excluir" aria-hidden="true"></i></button>
                 </form>
                 </td>

@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Banner</title>
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -75,7 +74,6 @@
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#Excluir" role="tab" aria-controls="Excluir" aria-selected="false">Excluir</a>
         </li>
-
       </ul>
     </div>
 
@@ -84,9 +82,7 @@
     $caminho = '../documentos/' . $nome_banner . '/';
     $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
     $contador = count($img);
-
     $numImagem = 5;
-
     if ($contador == $numImagem) {
       $disabled = 'disabled';
     } else {
@@ -131,7 +127,6 @@
                 echo "Não possível realizar o upload! ";
             }
           }
-
           ?>
         </form>
       </div>
@@ -146,7 +141,6 @@
 
       ?>
       <form method="post" id="cadProtocolo" class="ml-4">
-
         <div class="form-row" style="justify-content:left;margin-top:50px;margin-left: 10px;">
 
           <?php
@@ -169,16 +163,11 @@
           }
           ?>
         </div>
-
       </form>
-
 
       <div class="tab-pane" id="Editar" role="tabpanel" aria-labelledby="Editar-tab">
         asuhdas
       </div>
-
-
-
 
       <div class="tab-pane" id="Excluir" role="tabpanel" aria-labelledby="Excluir-tab">
         <form method="POST" id="excluirTodasImagens">
@@ -187,6 +176,7 @@
           <input class="btn btn-primary" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" style="float: right;" />
         </form>
       </div>
+
       <!-- Excluir - Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -195,27 +185,26 @@
               <h4 class="modal-title" id="myModalLabel">Imagens excluidas com sucesso!</h4>
             </div>
             <div class="modal-footer">
-              <button type="button" onclick="history.go(0)" class="btn btn-danger" data-dismiss="modal">Voltar</button>
-              <a class="text-white" href="addImagemBanner.php"><button type="button" class="btn btn-info">Listar banners</a>
+              <button class="text-white btn btn-info" type="button" onclick="history.go(0)">Voltar</button>
             </div>
           </div>
         </div>
       </div>
+
       <div class="modal fade" id="confirm" role="dialog">
         <div class="modal-dialog modal-md">
-
           <div class="modal-content">
             <div class="modal-body">
               <p> DESEJA REALMENTE EXCLUIR TODAS AS IMAGENS?</p>
             </div>
             <div class="modal-footer">
               <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
-              <a href="#" type="button" class="btn btn-danger" id="delete">Apagar Registo</a>
+              <button type="button" class="btn btn-danger" id="delete">Apagar Registo</button>
             </div>
           </div>
-
         </div>
-      </div>
+      </div> 
+
       <!-- Erro ao excluir - Modal -->
       <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
