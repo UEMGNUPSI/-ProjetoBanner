@@ -56,6 +56,32 @@
           return false;
         });
       });
+      $(document).ready(function() {
+
+        /// Quando usuário clicar em salvar será feito todos os passo abaixo
+        $('#excluirButton').click(function() {
+
+          var dados = $('#ExcluirImg').serialize();
+          $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '../funcoes/apagarImagem.php',
+            async: true,
+            data: dados,
+            success: function(response) {
+              if (response == '1') {
+                $('#confirmar').modal('hide');
+                $('#myModals').modal('show');
+
+              } else {
+                $('#myModals2').modal('show');
+              }
+            }
+          });
+
+          return false;
+        });
+      });
     </script>
   </head>
 
@@ -140,7 +166,7 @@
       $loopHorizontal = 5;
 
       ?>
-      <form method="post" id="cadProtocolo" class="ml-4">
+      <form  id="ExcluirImg" class="ml-4">
         <div class="form-row" style="justify-content:left;margin-top:50px;margin-left: 10px;">
 
           <?php
@@ -149,13 +175,13 @@
 
               echo "
           <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 2%;'>
-          <a href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+          <a data-toggle='modal' data-target='#confirmar' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
          ";
             } else if ($contador = $loopHorizontal) {
               echo "       
             <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>
-            <a href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+            <a  data-toggle='modal' data-target='#confirmar' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
 
           </div>
           ";
@@ -199,7 +225,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
-              <button type="button" class="btn btn-danger" id="delete">Apagar Registo</button>
+              <button type="button" class="btn btn-danger" id="delete">Excluir</button>
             </div>
           </div>
         </div>
@@ -219,6 +245,46 @@
         </div>
       </div>
 
+      <div class="modal fade" id="confirmar" role="dialog">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p> DESEJA REALMENTE EXCLUIR A IMAGEM?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="excluirButton">Excluir</button>
+              </div>
+            </div>
+          </div>
+        </div> 
+         <!-- Excluir 1 imagem - Modal -->
+      <div class="modal fade" id="myModals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Imagens excluidas com sucesso!</h4>
+            </div>
+            <div class="modal-footer">
+              <button class="text-white btn btn-info" type="button" onclick="history.go(0)">Voltar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Erro ao excluir - Modal -->
+      <div class="modal fade" id="myModals2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Erro ao excluir as Imagens</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
