@@ -55,33 +55,8 @@
 
           return false;
         });
-      });
-      $(document).ready(function() {
-
-        /// Quando usuário clicar em salvar será feito todos os passo abaixo
-        $('#excluirButton').click(function() {
-
-          var dados = $('#ExcluirImg').serialize();
-          $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: '../funcoes/apagarImagem.php',
-            async: true,
-            data: dados,
-            success: function(response) {
-              if (response == '1') {
-                $('#confirmar').modal('hide');
-                $('#myModals').modal('show');
-
-              } else {
-                $('#myModals2').modal('show');
-              }
-            }
-          });
-
-          return false;
-        });
-      });
+      })
+      
     </script>
     <style>
       .imagem {
@@ -119,9 +94,6 @@
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" data-toggle="tab" href="#Cadastrar" role="tab" aria-controls="Cadastrar" aria-selected="true">Cadastrar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#Editar" role="tab" aria-controls="Editar" aria-selected="false">Editar</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#Excluir" role="tab" aria-controls="Excluir" aria-selected="false">Excluir</a>
@@ -197,17 +169,36 @@
 
           <?php
           for ($i = 0; $i < $contador; $i++) {
+            echo "   
+          <div class='modal fade' id='excluirImagem' role='dialog'>
+            <div class='modal-dialog modal-md'>
+              <div class='modal-content'>
+                <div class='modal-body'>
+                    <p> Deseja mesmo remover esta imagem?</p>
+                </div>
+                <div class='modal-footer'>
+                  <button type='button' data-dismiss='modal' class='btn btn-primary mr-auto'>Cancelar</button>
+                  <a class='btn btn-danger' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> Excluir</a>
+                </div>
+              </div>
+            </div>
+          </div>" ;
+
             if ($contador <= $loopHorizontal) {
 
               echo "
           <div id='mostrarImagem' class='form-row imagem fechar' style='display: block;border-radius: 5px;margin-right: 2%;'>
           <a data-toggle='modal' data-target='#confirmar' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+          <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 2%;'>
+          <a data-toggle='modal' data-target='#excluirImagem'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
          ";
             } else if ($contador = $loopHorizontal) {
               echo "       
             <div id='mostrarImagem' class='form-row ml-4 imagem fechar' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>
             <a  data-toggle='modal' data-target='#confirmar' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+            <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>
+            <a data-toggle='modal' data-target='#excluirImagem'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
 
           </div>
           ";
@@ -216,11 +207,7 @@
   
           ?>
         </div>
-      </form>
-
-      <div class="tab-pane" id="Editar" role="tabpanel" aria-labelledby="Editar-tab">
-        asuhdas
-      </div>
+      </form>     
 
       <div class="tab-pane" id="Excluir" role="tabpanel" aria-labelledby="Excluir-tab">
         <form method="POST" id="excluirTodasImagens">
@@ -248,7 +235,7 @@
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-body">
-              <p> DESEJA REALMENTE EXCLUIR TODAS AS IMAGENS?</p>
+              <p> Realmente deseja excluir todas as imagens?</p>
             </div>
             <div class="modal-footer">
               <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
@@ -314,5 +301,7 @@
       </div>
     </div>
   </div>
+     
+        
 
   <?php include_once  "footer.php"; ?>

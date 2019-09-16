@@ -56,7 +56,13 @@
                             <button type="submit" class="btn btn-primary  mb-3" formaction="caroussel.php" style="width: 100%;"><?php echo $dados['categoria_banner']; ?></button>
                         </form>
                     <?php } ?>
+                    <script>
+    var callbackFunction = function(data) {
+        console.log(data);
+    };
+</script>
 
+<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='são paulo, sp')&format=json&callback=callbackFunction"></script>
                 </div>
 
             </div>

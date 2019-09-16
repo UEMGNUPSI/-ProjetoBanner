@@ -1,14 +1,16 @@
 <?php 
 
     $imagem = $_GET['imagem'];
+    $banner = $_GET['banner'];
     if (file_exists($imagem)) 
     {
-    	unlink($imagem);
-    	echo 1;
+        unlink($imagem);
+        header("Location: ../view/uploadImagem.php?banner=$banner");
+
     }
     else
     {
-    	echo 2;
+        header("Location: ../view/uploadImagem.php?banner=$banner"); 
     }
     
     

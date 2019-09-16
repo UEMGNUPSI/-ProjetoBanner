@@ -74,6 +74,9 @@
             $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
             /*#endregion responsive code end*/
         };
+        
+        
+    
     </script>
     <link href="//fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700&subset=latin-ext,vietnamese,latin,cyrillic" rel="stylesheet" type="text/css" />
     <style>
@@ -113,9 +116,9 @@
         overflow-x:hidden;
         }
     </style>
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1920px;height:1080px;overflow:hidden;visibility:hidden;">    
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1920px;height:1020px;overflow:hidden;visibility:hidden;">    
         
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1920px;height:1080px;overflow:hidden;">
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1920px;height:1020px;overflow:hidden;">
         <?php
       $nome_banner = $_GET['banner'];
       $caminho = '../documentos/' . $nome_banner . '/';
@@ -133,7 +136,7 @@
 
         }
       }
-    ?>                
+    ?>               
         </div>
         <!-- Bullet Navigator -->
         <div data-u="navigator" class="jssorb052" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
@@ -149,7 +152,6 @@
    
 </body>
 </html>
-
 
 
 
