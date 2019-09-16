@@ -83,6 +83,32 @@
         });
       });
     </script>
+    <style>
+      .imagem {
+        position: relative;
+        display: inline-block;
+        
+      }
+
+      .imagem:before {
+        position: absolute;
+        background: #d02727;
+        color: #fff;
+        padding: 4px;
+        border-radius: 2px;
+        top: 0px;
+        right: 5px;
+        font-size: 12px;
+        font-family: arial;
+        box-shadow: 0 0 5px #000;
+      }
+
+      .imagem.fechar:before {
+        content: "X";
+      }
+
+     
+    </style>
   </head>
 
   <?php include_once "sidebar.php"; ?>
@@ -166,7 +192,7 @@
       $loopHorizontal = 5;
 
       ?>
-      <form  id="ExcluirImg" class="ml-4">
+      <form id="ExcluirImg" class="ml-4">
         <div class="form-row" style="justify-content:left;margin-top:50px;margin-left: 10px;">
 
           <?php
@@ -174,19 +200,20 @@
             if ($contador <= $loopHorizontal) {
 
               echo "
-          <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 2%;'>
+          <div id='mostrarImagem' class='form-row imagem fechar' style='display: block;border-radius: 5px;margin-right: 2%;'>
           <a data-toggle='modal' data-target='#confirmar' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
          ";
             } else if ($contador = $loopHorizontal) {
               echo "       
-            <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>
+            <div id='mostrarImagem' class='form-row ml-4 imagem fechar' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>
             <a  data-toggle='modal' data-target='#confirmar' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
 
           </div>
           ";
             }
           }
+  
           ?>
         </div>
       </form>
@@ -229,7 +256,7 @@
             </div>
           </div>
         </div>
-      </div> 
+      </div>
 
       <!-- Erro ao excluir - Modal -->
       <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -246,19 +273,19 @@
       </div>
 
       <div class="modal fade" id="confirmar" role="dialog">
-          <div class="modal-dialog modal-md">
-            <div class="modal-content">
-              <div class="modal-body">
-                <p> DESEJA REALMENTE EXCLUIR A IMAGEM?</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
-                <button type="button" class="btn btn-danger" id="excluirButton">Excluir</button>
-              </div>
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p> DESEJA REALMENTE EXCLUIR A IMAGEM?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
+              <button type="button" class="btn btn-danger" id="excluirButton">Excluir</button>
             </div>
           </div>
-        </div> 
-         <!-- Excluir 1 imagem - Modal -->
+        </div>
+      </div>
+      <!-- Excluir 1 imagem - Modal -->
       <div class="modal fade" id="myModals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
