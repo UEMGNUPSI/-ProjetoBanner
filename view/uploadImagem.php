@@ -203,12 +203,12 @@
           ?>
         </div>
       </form>     
-
+        
       <div class="tab-pane" id="Excluir" role="tabpanel" aria-labelledby="Excluir-tab">
         <form method="POST" id="excluirTodasImagens">
           <input type="hidden" name="banner" value="<?php echo $caminho; ?>">
           <input type="hidden" name="nomebanner" value="<?php echo $nome_banner; ?>">
-          <input class="btn btn-primary" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" style="float: right;" />
+          <input class="btn btn-primary float-right my-3 mr-5" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" />
         </form>
       </div>
 

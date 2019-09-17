@@ -71,7 +71,7 @@
 
     <div class="form-row ml-5 mb-3">
         <div class="col-sm-6">
-             <input  class = "btn btn-primary"type="button" value="Cadastrar"  />
+             <input id= 'salvar' class = "btn btn-primary"type="button" value="Cadastrar"  />
         </div>
     </div>
 </form>

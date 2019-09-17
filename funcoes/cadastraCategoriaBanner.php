@@ -11,5 +11,5 @@
 			if(!$conn->query("INSERT INTO categoria_banner(categoria_banner) VALUES ('$categoriaBanner')")) die ('Os dados não foram inseridos');
 				echo '1'; 	
 			}
-	
+			
 ?>
