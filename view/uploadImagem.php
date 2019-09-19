@@ -13,11 +13,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <script>
-      $('#bologna-list a').on('click', function(e) {
-        e.preventDefault()
-        $(this).tab('show')
-      })
-
       function Checkfiles() {
         var fup = document.getElementById('nome_arquivo');
         var fileName = fup.value;
@@ -56,13 +51,12 @@
           return false;
         });
       })
-      
     </script>
     <style>
       .imagem {
         position: relative;
         display: inline-block;
-        
+
       }
 
       .imagem:before {
@@ -81,47 +75,36 @@
       .imagem.fechar:before {
         content: "X";
       }
-
-     
     </style>
   </head>
 
   <?php include_once "sidebar.php"; ?>
   <?php include_once "../funcoes/conexao.php"; ?>
 
-  <div class="card">
-    <div class="card-header">
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#Cadastrar" role="tab" aria-controls="Cadastrar" aria-selected="true">Cadastrar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#Excluir" role="tab" aria-controls="Excluir" aria-selected="false">Excluir</a>
-        </li>
-      </ul>
-    </div>
 
-    <?php
-    $nome_banner = $_GET['banner'];
-    $caminho = '../documentos/' . $nome_banner . '/';
-    $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
-    $contador = count($img);
-    $numImagem = 5;
-    if ($contador == $numImagem) {
-      $disabled = 'disabled';
-    } else {
-      $disabled = "";
-    }
-    ?>
-
-    <div class="tab-content mt-3">
-      <div class="tab-pane active" id="Cadastrar" role="tabpanel" aria-labelledby="Cadastrar-tab">
+  <?php
+  $nome_banner = $_GET['banner'];
+  $caminho = '../documentos/' . $nome_banner . '/';
+  $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
+  $contador = count($img);
+  $numImagem = 5;
+  if ($contador == $numImagem) {
+    $disabled = 'disabled';
+  } else {
+    $disabled = "";
+  }
+  ?>
+  <div class="col-12 text-center my-5">
+    <h1 style="font-weight: 330; color:#4F4F4F">Imagens Banner</h1>
+    <h2 style="font-weight:200; color:#A9A9A9;font-size:25px">(Realize o upload das imagens para o banner)</h2>
+    <div class="row mt-5">
+      <div class="col-12">
         <form method="POST" enctype="multipart/form-data" class="ml-4 mb-3" onsubmit="Checkfiles(this)">
           <div class="fileUpload btn btn-primary">
             <input type="file" id="nome_arquivo" name="arquivo" <?php echo $disabled; ?> accept="image/png, image/jpeg">
             <span class="nome_arquivo"></span>
           </div>
-          <input type="submit" name="botao" value="Enviar" onClick="history.go(0)">
+          <input type="submit" class="btn btn-primary ml-2" name="botao" <?php echo $disabled; ?> value="Enviar" onClick="history.go(0)">
           <?php
           $_UP['pasta'] = '../documentos/' . $nome_banner . '/';
 
@@ -153,23 +136,23 @@
           }
           ?>
         </form>
-      </div>
 
-      <?php
 
-      $caminho = '../documentos/' . $nome_banner . '/';
-      $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
-      $contador = count($img);
+        <?php
 
-      $loopHorizontal = 5;
+        $caminho = '../documentos/' . $nome_banner . '/';
+        $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
+        $contador = count($img);
 
-      ?>
-      <form id="ExcluirImg" class="ml-4">
-        <div class="form-row" style="justify-content:left;margin-top:50px;margin-left: 10px;">
+        $loopHorizontal = 5;
 
-          <?php
-          for ($i = 0; $i < $contador; $i++) {
-            echo "   
+        ?>
+        <form id="ExcluirImg" class="ml-4">
+          <div class="form-row" style="justify-content:left;margin-top:50px;margin-left: 10px;">
+
+            <?php
+            for ($i = 0; $i < $contador; $i++) {
+              echo "   
           <div class='modal fade' id='excluirImagem' role='dialog'>
             <div class='modal-dialog modal-md'>
               <div class='modal-content'>
@@ -177,126 +160,125 @@
                     <p> Deseja mesmo remover esta imagem?</p>
                 </div>
                 <div class='modal-footer'>
-                  <button type='button' data-dismiss='modal' class='btn btn-primary mr-auto'>Cancelar</button>
-                  <a class='btn btn-danger' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'> Excluir</a>
-                </div>
+                  <a class='btn btn-danger' href='../funcoes/apagarImagem.php?imagem=" . $img[$i] . "&banner=" . $nome_banner . "'>Sim, eu quero!</a>
+                  <button type='button' data-dismiss='modal' class='btn btn-primary ml-auto'>Ops! Não quero!</button>
+                  </div>
               </div>
             </div>
-          </div>" ;
+          </div>";
 
-            if ($contador <= $loopHorizontal) {
+              if ($contador <= $loopHorizontal) {
 
-              echo "
-          <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 2%;'>          
+                echo "
+          <div id='mostrarImagem' class='form-row mr-auto ' style='display: block;border-radius: 5px;'>          
           <a data-toggle='modal' data-target='#excluirImagem' class='imagem fechar'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
          ";
-            } else if ($contador = $loopHorizontal) {
-              echo "       
+              } else if ($contador = $loopHorizontal) {
+                echo "       
             <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>          
             <a data-toggle='modal' data-target='#excluirImagem' class='imagem fechar'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
           ";
+              }
             }
-          }
-  
-          ?>
-        </div>
-      </form>     
-        
-      <div class="tab-pane" id="Excluir" role="tabpanel" aria-labelledby="Excluir-tab">
+
+            ?>
+          </div>
+        </form>
         <form method="POST" id="excluirTodasImagens">
           <input type="hidden" name="banner" value="<?php echo $caminho; ?>">
           <input type="hidden" name="nomebanner" value="<?php echo $nome_banner; ?>">
-          <input class="btn btn-primary float-right my-3 mr-5" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" />
+          <input class="btn btn-danger float-right my-5  mr-5" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" />
         </form>
-      </div>
 
-      <!-- Excluir - Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Imagens excluidas com sucesso!</h4>
-            </div>
-            <div class="modal-footer">
-              <button class="text-white btn btn-info" type="button" onclick="history.go(0)">Voltar</button>
+        <!-- Excluir - Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Imagens excluidas com sucesso!</h4>
+              </div>
+              <div class="modal-footer">
+                <button class="text-white btn btn-info" type="button" onclick="history.go(0)">Voltar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="modal fade" id="confirm" role="dialog">
-        <div class="modal-dialog modal-md">
-          <div class="modal-content">
-            <div class="modal-body">
-              <p> Realmente deseja excluir todas as imagens?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
-              <button type="button" class="btn btn-danger" id="delete">Excluir</button>
+        <div class="modal fade" id="confirm" role="dialog">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p> Realmente deseja excluir todas as imagens?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="delete">Excluir</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Erro ao excluir - Modal -->
-      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Erro ao excluir as Imagens</h4>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+        <!-- Erro ao excluir - Modal -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Erro ao excluir as Imagens</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="modal fade" id="confirmar" role="dialog">
-        <div class="modal-dialog modal-md">
-          <div class="modal-content">
-            <div class="modal-body">
-              <p> DESEJA REALMENTE EXCLUIR A IMAGEM?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
-              <button type="button" class="btn btn-danger" id="excluirButton">Excluir</button>
+        <div class="modal fade" id="confirmar" role="dialog">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p> DESEJA REALMENTE EXCLUIR A IMAGEM?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="excluirButton">Excluir</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Excluir 1 imagem - Modal -->
-      <div class="modal fade" id="myModals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Imagens excluidas com sucesso!</h4>
-            </div>
-            <div class="modal-footer">
-              <button class="text-white btn btn-info" type="button" onclick="history.go(0)">Voltar</button>
+        <!-- Excluir 1 imagem - Modal -->
+        <div class="modal fade" id="myModals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Imagens excluidas com sucesso!</h4>
+              </div>
+              <div class="modal-footer">
+                <button class="text-white btn btn-info" type="button" onclick="history.go(0)">Voltar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Erro ao excluir - Modal -->
-      <div class="modal fade" id="myModals2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Erro ao excluir as Imagens</h4>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+        <!-- Erro ao excluir - Modal -->
+        <div class="modal fade" id="myModals2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Erro ao excluir as Imagens</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-     
-        
+
+
+
 
   <?php include_once  "footer.php"; ?>
