@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Projeto Banner - Em branco</title>
+  <title>Comunica Uemg</title>
 
   
 

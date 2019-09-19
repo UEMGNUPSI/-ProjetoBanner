@@ -25,7 +25,7 @@ if (!isset($_SESSION['login'])){
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="far fa-file-image"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Projeto Banner</div>
+        <div class="sidebar-brand-text mx-3">Comunica Uemg</div>
       </a>
 
       <!-- Divider -->
@@ -49,9 +49,8 @@ if (!isset($_SESSION['login'])){
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Utilidades:</h6>
             <a class="collapse-item" href="addCategoriaBanner.php">Banners</a>
-            <a class="collapse-item" href="addImagemBanner.php">Inserir imagem</a> 
+            <a class="collapse-item" href="addImagemBanner.php">Imagens</a> 
           </div>
         </div>
       </li>

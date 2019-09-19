@@ -16,21 +16,22 @@
     <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
     <style>
         body {
-            background-image: url('../img/uemg.jpg');
+            background-image: url('../img/uemg2.jpg');
             background-repeat: no-repeat;
             background-size: 1920px 1020px;
-            opacity: 1;
+            opacity:1;
             filter: alpha(opacity=100);
         }
+        
     </style>
 </head>
 
 <?php include_once "../funcoes/conexao.php"; ?>
 
-<div class="container">
+<div class="container no">
     <div class="col-12 text-center my-5">
 
-        <h1 style="font-weight: 330;color: white;"><i class="fa fa-paper-plane text-white" aria-hidden="true"></i> Banner</h1>
+        <h1 style="font-weight: 330;color:#4F4F4F">Banners</h1>
 
 
         <div class="row">

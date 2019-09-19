@@ -22,7 +22,8 @@
 
 <div class="col-12 text-center my-5">
 
-    <h1 style="font-weight: 330;"><i class="fa fa-paper-plane text-primary mr-3" aria-hidden="true"></i>Categorias - Banner</h1>
+    <h1 style="font-weight: 330; color:#4F4F4F">Banners</h1>
+    <h2 style="font-weight:200; color:#A9A9A9;font-size:25px">(Escolha o banner para ser exibido)</h2>
 
 
     <div class="row">
@@ -43,10 +44,10 @@
 
                 while ($dados = mysqli_fetch_assoc($consulta)) {
                     ?>
-                <form action="post" class="col-5">
-                    <input type="hidden" name="banner" value="<?php echo $dados['categoria_banner']; ?>">
-                    <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="caroussel.php" style="width: 100%;"><?php echo $dados['categoria_banner']; ?></button>
-                </form>
+                    <form action="post" class="col-5">
+                        <input type="hidden" name="banner" value="<?php echo $dados['categoria_banner']; ?>">
+                        <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="caroussel.php" style="width: 100%;"><?php echo $dados['categoria_banner']; ?></button>
+                    </form>
                 <?php } ?>
 
             </div>
