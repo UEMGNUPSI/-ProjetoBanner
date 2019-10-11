@@ -24,7 +24,7 @@
         body {
             background-image:linear-gradient(rgba(254, 254, 254, 0.4),rgba(254, 254, 254,0.4)),url('../img/uemgfrutal2.svg');
             background-repeat: no-repeat;
-            background-size: 1920px 1020px;
+            background-size: cover;
             opacity:1;
             filter: alpha(opacity=100);
         }
@@ -118,24 +118,21 @@
     </div>
   </div>
 </nav>  
+    <div class="row" style="margin-top:50px;" id="resultado">
+    <div class="col-12"> 
+        <?php
+            $sql = "SELECT * FROM categoria_banner ORDER BY categoria_banner";
+            $consulta = mysqli_query($conn, $sql);
 
-    <div class="row ">
-        <div class="col-12">             
-            <div class="row" id="resultado">
-                <?php
-                    $sql = "SELECT * FROM categoria_banner ORDER BY categoria_banner";
-                    $consulta = mysqli_query($conn, $sql);
+            while ($dados = mysqli_fetch_assoc($consulta)) {
+                ?>
+                <form action="post" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 ">
+                    <input type="hidden" name="banner" class="" value="<?php echo $dados['categoria_banner']; ?>">
+                    <button type="submit" class="btn btn-primary mb-3" formaction="caroussel.php" style="width: 100%; margin-bottom:15px;"><?php echo $dados['categoria_banner']; ?></button>
+                </form>
+            <?php } ?>
 
-                    while ($dados = mysqli_fetch_assoc($consulta)) {
-                        ?>
-                        <form action="post" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 ">
-                            <input type="hidden" name="banner" value="<?php echo $dados['categoria_banner']; ?>">
-                            <button type="submit" class="btn btn-primary mb-3" formaction="caroussel.php" style="width: 100%;"><?php echo $dados['categoria_banner']; ?></button>
-                        </form>
-                    <?php } ?>
-   
-            </div>
-        </div>
+    </div>
     </div>    
 
 </div>
