@@ -10,13 +10,19 @@
     <meta name="author" content="">
 
     <title>Banner</title>
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">    
+    <!-- <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+
+    <!-- FONTES -->
     <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Signika+Negative:300" rel="stylesheet">
+    
     <style>
         body {
-            background-image: url('../img/uemg2.jpg');
+            background-image:linear-gradient(rgba(254, 254, 254, 0.4),rgba(254, 254, 254,0.4)),url('../img/uemgfrutal2.svg');
             background-repeat: no-repeat;
             background-size: 1920px 1020px;
             opacity:1;
@@ -27,50 +33,116 @@
 </head>
 
 <?php include_once "../funcoes/conexao.php"; ?>
+<form class="modal fade" id="janela" method="post" action="../funcoes/verificaLogin.php">
+      <div class="modal-dialog" id='teste'>
+
+        <div class="modal-content">
+          
+          <div id="Logar" class="tab">
+
+            <div class="modal-header" style="background-color: rgba(60, 110, 143, 0.96);">
+              <button class="close" data-dismiss="modal"><span>&times;</span></button>
+              <h4 class="modal-title" style="color: white"><span id="icon-login" class="glyphicon glyphicon-user" style="padding-right: 8px;color: white;"></span>Efetuar Login</h4>
+
+
+            </div>
+
+            <div class="modal-body div-login">
+                <div id="div-info" class="col-md-6">
+                    
+                    <p>Realize login para cadastrar banners</p>
+                   
+                </div>
+                <div class="col-md-6" style="margin-bottom: 5px;">
+                    <div class="form-group">
+                        <label for="email"><span id="icon-email-pass" class="glyphicon glyphicon-user"></span>Usuário</label>
+                        <input id='email' type="text" class="form-login" id="campo_usuario" name="user"/>
+
+                    </div>
+
+                      <div class="form-group">
+                        <label for="senha"><span id="icon-email-pass" class="glyphicon glyphicon-lock"></span> Senha</label>
+                        <input id='senha' type="password" class="form-login red" id="campo_senha" name="pass" maxlength="20"/>
+
+                      </div>
+                   
+                </div>
+              
+
+              
+            </div>
+              
+          </div>
+
+          <!-- rodape -->
+          <div class="modal-footer">
+              <div class="col-md-12">
+                <button class="btn-custom btn-logar" type="submit">Logar</button>
+                <button class="btn-custom btn-cancelar" data-dismiss="modal">Cancelar</button>
+              </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </form>
 
 <div class="container no">
-    <div class="col-12 text-center my-5">
+    <div class="col-12">
+        
+    <nav class="navbar navbar-inverse navbar-custom  navbar-fixed-top nav-color">
+  <div class="container">
 
-        <h1 style="font-weight: 330;color:#4F4F4F">Banners</h1>
+  <!-- header -->
 
+        <div class="navbar-header">
+        <a href="index.php" class="navbar-brand">
+            <span class="img-logo">UEMG Eventos</span>
+        </a>
 
-        <div class="row">
+        </div>
+    
+    <div class="collapse navbar-collapse" id="barra-navegacao">
+      <ul class="nav navbar-nav navbar-right">
+      <li>
+        <form class="form-inline">
+          <div id="barra-pesquisa" class="input-group input-group-sm ">
+            <span class="input-group-addon" id="sizing-addon3"><button class="btn btn-pesquisa" type="submit"><span id="icon-pesquisa" class="glyphicon glyphicon-search"></span></button></span></span>
+            <input type="text" class="form-control" placeholder="Pesquise aqui..." aria-describedby="basic-addon1" id="buscanome" onkeyup="buscarCategoriaBanner(this.value)">
+            
+          </div>
+        </form>
+      </li>
+      <li><a href="#" data-toggle="modal" data-target="#janela">ENTRAR</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>  
 
-            <div class="col-12">
-
-                <form class="form-inline mb-3 ">
-                    <input class="form-control mt-4" type="search" placeholder="Buscar..." id="buscanome" onkeyup="buscarCategoriaBanner(this.value)">
-                </form>
-
-                <div class="row" id="resultado">
-
-                    <?php
-
-
+    <div class="row ">
+        <div class="col-12">             
+            <div class="row" id="resultado">
+                <?php
                     $sql = "SELECT * FROM categoria_banner ORDER BY categoria_banner";
                     $consulta = mysqli_query($conn, $sql);
 
                     while ($dados = mysqli_fetch_assoc($consulta)) {
                         ?>
-                        <form action="post" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <form action="post" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 ">
                             <input type="hidden" name="banner" value="<?php echo $dados['categoria_banner']; ?>">
-                            <button type="submit" class="btn btn-primary  mb-3" formaction="caroussel.php" style="width: 100%;"><?php echo $dados['categoria_banner']; ?></button>
+                            <button type="submit" class="btn btn-primary mb-3" formaction="caroussel.php" style="width: 100%;"><?php echo $dados['categoria_banner']; ?></button>
                         </form>
                     <?php } ?>
-                    <script>
-    var callbackFunction = function(data) {
-        console.log(data);
-    };
-</script>
-
-<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='são paulo, sp')&format=json&callback=callbackFunction"></script>
-                </div>
-
+   
             </div>
-
         </div>
-    </div>
-</div>
+    </div>    
 
 </div>
-<?php include_once  "footer.php"; ?>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

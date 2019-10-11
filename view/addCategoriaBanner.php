@@ -26,7 +26,7 @@
 
             /// Quando usuário clicar em salvar será feito todos os passo abaixo
             $('#salvar').click(function() {
-                var dados = $('#banner').serialize();
+                var dados = $('#cadCatBanner').serialize();
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -81,10 +81,10 @@
                 <div class="form-row" style="width: 90%; padding:1%; margin:auto">
                     <div class="form-group text-left col-sm-6  ">
                         <label for="inputTv">Posição da TV:</label>
-                        <select id="inputTv" class="form-control">
-                            <option disabled selected>Escolher...</option>
-                            <option>Vertical</option>
-                            <option>Horizontal</option>
+                        <select id="inputTv" class="form-control" name="inputTv">
+                            <option ></option>
+                            <option >Vertical</option>
+                            <option >Horizontal</option>
                         </select>
                     </div>
                 </div>
@@ -95,6 +95,7 @@
                     </div>
                 </div>
             </form>
+
 
             <div class="table-responsive" style="width: 90%; padding:1%; margin:20px auto">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -176,6 +177,16 @@
                                             <div class="form-group">
                                                 <label for="recipient-name" class="col-form-label">Alterar:</label>
                                                 <input type="text" class="form-control" id="nome_banner" name="nome_banner" placeholder="<?php echo $dados['categoria_banner']; ?>">
+                                            </div>
+                                            <div class="form-row" style="width: 90%; padding:1%; margin:auto">
+                                                <div class="form-group text-left col-sm-6  ">
+                                                    <label for="inputTv">Posição da TV:</label>
+                                                    <select id="inputTv" class="form-control" name="inputTv">
+                                                        <option ></option>
+                                                        <option >Vertical</option>
+                                                        <option >Horizontal</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                     </div>
                                     <div class="modal-footer">

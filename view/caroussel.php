@@ -130,7 +130,7 @@
         echo "
           <div data-p='170'>
             <img data-u='image' src='$img[$i]' />
-            <div data-t='$i++' style='position:absolute;top:320px;left:30px;width:500px;height:40px;font-family:Oswald,sans-serif;font-size:32px;font-weight:200;line-height:1.2;text-align:center;background-color:rgba(255,188,5,0.8);'>Teste de animation</div>
+            
           </div>
           ";
 
