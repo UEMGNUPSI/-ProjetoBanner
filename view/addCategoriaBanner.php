@@ -91,7 +91,7 @@
 
                 <div class="form-row" style="width: 90%;padding:1%;  margin:auto">
                     <div class="col-sm-6">
-                        <input id='salvar' class="btn btn-primary" style="float:right;" type="button" value="Cadastrar" />
+                        <input id='salvar' class="btn " style="float:right;background-color:#3b6e8f;color: #FFFFFF" type="button" value="Cadastrar" />
                     </div>
                 </div>
             </form>
@@ -100,8 +100,9 @@
             <div class="table-responsive" style="width: 90%; padding:1%; margin:20px auto">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead class="thead">
-                        <th class="text-center  text-light" style="background-color:#292b2c"> Banners</th>
-                        <th class="text-center  text-light" style="background-color:#292b2c"> Ações</th>
+                        <th class="text-center  text-light" style="background-color:#3b6e8f"> Banners</th>
+                        <th class="text-center  text-light" style="background-color:#3b6e8f"> Posição</th>
+                        <th class="text-center  text-light" style="background-color:#3b6e8f"> Ações</th>
                     </thead>
 
                     <?php
@@ -111,6 +112,7 @@
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<td>" . $dados['categoria_banner'] . "</td>";
+                        echo "<td>" . $dados['position'] . "</td>";
                         echo "<td>";
 
                         ?>

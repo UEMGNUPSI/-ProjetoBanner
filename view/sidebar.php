@@ -18,10 +18,10 @@ if (!isset($_SESSION['login'])){
   <div id="wrapper" style="position: absolute; width: 100%">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion " style="background-color:#292b2c"  id="accordionSidebar" >
+    <ul class="navbar-nav sidebar sidebar-dark accordion " style="background-color:#2e5064"  id="accordionSidebar" >
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="far fa-file-image"></i>
         </div>
@@ -81,7 +81,7 @@ if (!isset($_SESSION['login'])){
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow"style="background-color:#292b2c">
+        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow"style="background-color: #2e5064">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -117,17 +117,17 @@ if (!isset($_SESSION['login'])){
 
             <!-- Nav Item - User Information -->
             <?php 
-      $valor = isset($_SESSION['login']) ? $_SESSION['login'] : 'Admin';
+      $valor = isset($_SESSION['login']) ? $_SESSION['login'] : 'LOGIN';
     ?>
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $valor ?></span>
+                <span class="mr-2 d-none d-lg-inline  small" style="color: #FFFFFF"><?php echo $valor ?></span>
                 
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <?php 
-                    if($valor == 'Admin'){ ?>
+                    if($valor == 'LOGIN'){ ?>
                        <a class="dropdown-item" href="../view/login.php">
                          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>    
                             Logar                

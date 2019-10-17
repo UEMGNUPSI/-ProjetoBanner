@@ -128,7 +128,7 @@
                 ?>
                 <form action="post" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 ">
                     <input type="hidden" name="banner" class="" value="<?php echo $dados['categoria_banner']; ?>">
-                    <button type="submit" class="btn btn-primary mb-3" formaction="caroussel.php" style="width: 100%; margin-bottom:15px;"><?php echo $dados['categoria_banner']; ?></button>
+                    <button type="submit" class="btn mb-3" formaction="caroussel.php" style="width: 100%; margin-bottom:15px;background-color: rgba(60, 110, 143, 0.96);color: white"><?php echo $dados['categoria_banner']; ?></button>
                 </form>
             <?php } ?>
 

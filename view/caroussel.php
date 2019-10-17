@@ -141,7 +141,7 @@
         <!-- Bullet Navigator -->
         <div data-u="navigator" class="jssorb052" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
             <div data-u="prototype" class="i" style="width:16px;height:16px;">
-                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <svg viewbox="0 0 16000 16000" style="position:cover">
                     <circle class="b" cx="8000" cy="8000" r="5800"></circle>
                 </svg>
             </div>

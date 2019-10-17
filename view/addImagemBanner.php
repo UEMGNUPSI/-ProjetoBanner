@@ -11,6 +11,8 @@
 
   <title>Banner</title>
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
   <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
@@ -46,7 +48,7 @@
           ?>
           <form action="post" class="col-5">
             <input type="hidden" name="banner" value="<?php echo $dados['categoria_banner']; ?>">
-            <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="uploadImagem.php" style="width: 100%;"><?php echo $dados['categoria_banner']; ?></button>
+            <button type="submit" class="btn  ml-5 mb-3" formaction="uploadImagem.php" style="width: 100%;background-color: #3b6e8f; color: #FFFFFF"><?php echo $dados['categoria_banner']; ?></button>
           </form>
         <?php } ?>
 

@@ -100,11 +100,11 @@
     <div class="row mt-5">
       <div class="col-12">
         <form method="POST" enctype="multipart/form-data" class="ml-4 mb-3" onsubmit="Checkfiles(this)">
-          <div class="fileUpload btn btn-primary">
+          <div class="fileUpload btn " style="background-color: #3b6e8f; color: #FFFFFF">
             <input type="file" id="nome_arquivo" name="arquivo" <?php echo $disabled; ?> accept="image/png, image/jpeg">
             <span class="nome_arquivo"></span>
           </div>
-          <input type="submit" class="btn btn-primary ml-2" name="botao" <?php echo $disabled; ?> value="Enviar" onClick="history.go(0)">
+          <input type="submit" class="btn  ml-2" name="botao" style="background-color: #3b6e8f; color: #FFFFFF" <?php echo $disabled; ?> value="Enviar" onClick="history.go(0)">
           <?php
           $_UP['pasta'] = '../documentos/' . $nome_banner . '/';
 
@@ -153,7 +153,7 @@
             <?php
             for ($i = 0; $i < $contador; $i++) {
               echo "   
-          <div class='modal fade' id='excluirImagem' role='dialog'>
+          <div class='modal fade' id='excluirImagem$i' role='dialog'>
             <div class='modal-dialog modal-md'>
               <div class='modal-content'>
                 <div class='modal-body'>
@@ -170,14 +170,14 @@
               if ($contador <= $loopHorizontal) {
 
                 echo "
-          <div id='mostrarImagem' class='form-row mr-auto ' style='display: block;border-radius: 5px;'>          
-          <a data-toggle='modal' data-target='#excluirImagem' class='imagem fechar'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+          <div id='mostrarImagem' class='form-row ' style='display: block;border-radius: 5px;margin-right: 4.5rem'>          
+          <a data-toggle='modal' data-target='#excluirImagem$i' class='imagem fechar'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
          ";
               } else if ($contador = $loopHorizontal) {
                 echo "       
             <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>          
-            <a data-toggle='modal' data-target='#excluirImagem' class='imagem fechar'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
+            <a data-toggle='modal' data-target='#excluirImagem$i' class='imagem fechar'> <img  src='$img[$i]' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #428bca;' /> </a>
           </div>
           ";
               }
@@ -189,9 +189,10 @@
         <form method="POST" id="excluirTodasImagens">
           <input type="hidden" name="banner" value="<?php echo $caminho; ?>">
           <input type="hidden" name="nomebanner" value="<?php echo $nome_banner; ?>">
-          <input class="btn btn-danger float-right my-5  mr-5" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" />
+          <input class="btn float-right my-5  mr-5" type="button" value="Salvar" style="background-color: #3b6e8f; color: #FFFFFF" data-toggle="modal" data-target="#salvar" />
+          <input class="btn btn-danger float-right my-5  mr-2" type="button" value="Excluir tudo" data-toggle="modal" data-target="#confirm" />         
         </form>
-
+        
         <!-- Excluir - Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
@@ -219,6 +220,23 @@
             </div>
           </div>
         </div>
+
+        <div class="modal fade" id="salvar" role="dialog">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p> Salvo com sucesso!</p>
+              </div>
+              <div class="modal-footer">
+                <form>
+                  <button type="button" class="btn" formaction="listarBanner.php" style="background-color: #3b6e8f; color: #FFFFFF" id="salvar">Ok</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
 
         <!-- Erro ao excluir - Modal -->
         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
